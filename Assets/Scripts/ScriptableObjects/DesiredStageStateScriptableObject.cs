@@ -40,8 +40,15 @@ public class StageState
     public bool bar1Active;
     public bool bar2Active;
     public bool bar3Active;
+    public bool smokeActive;
     [Header("Background State")]
     public int background = 1;
+
+    [Space]
+    [Space]
+
+    [Header("Time needed")]
+    public int timer;
 }
 
 public enum SoundTone

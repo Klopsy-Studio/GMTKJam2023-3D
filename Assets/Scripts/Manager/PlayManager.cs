@@ -7,6 +7,7 @@ public class PlayManager : MonoBehaviour
 {
     public static PlayManager instance;
 
+    public StageState beginningStageState;
     public List<StageState> desiredStageStates;
     public StageState currentStageStates;
 
@@ -14,53 +15,171 @@ public class PlayManager : MonoBehaviour
     int actionIndex;
 
     [SerializeField] Image timerImage;
+    [SerializeField] GameObject bookObject;
     [SerializeField] float timer;
     float maxTimer;
 
     public int failures;
 
+    bool active;
     bool failed;
     bool completed;
+
+    [Header("Stage References")]
+    [SerializeField] Light leftLight;
+    [SerializeField] Light rightLight;
+    [SerializeField] Light centerLight;
+
+    [SerializeField] GameObject bar1;
+    [SerializeField] GameObject bar2;
+    [SerializeField] GameObject bar3;
+    [SerializeField] GameObject smoke;
+
+    [SerializeField] MeshRenderer background;
+    [SerializeField] Material churchMaterial;
+    [SerializeField] Material castleMaterial;
+    [SerializeField] Material pantheonMaterial;
     private void Awake()
     {
         instance = this;
         currentStageStates = new StageState();
 
-        maxTimer = timer;
-
+        InitialSettings();
+        ResetTimer();
+        active = false;
     }
 
+    public void InitialSettings()
+    {
+        SetProps(bar1, beginningStageState.bar1Active);
+        SetProps(bar2, beginningStageState.bar2Active);
+        SetProps(bar3, beginningStageState.bar3Active);
+        SetProps(smoke, beginningStageState.smokeActive);
+
+        SetLights(leftLight, beginningStageState.leftLightIntensity, beginningStageState.leftLightColor);
+        SetLights(centerLight, beginningStageState.centerLightIntensity, beginningStageState.centerLightColor);
+        SetLights(rightLight, beginningStageState.rightLightIntensity, beginningStageState.rightLightColor);
+
+
+        switch (beginningStageState.background)
+        {
+            case 1:
+                background.material = churchMaterial;
+                break;
+            case 2:
+                background.material = castleMaterial;
+                break;
+            case 3:
+                background.material = pantheonMaterial;
+                break;
+            default:
+                break;
+        }
+
+        currentStageStates = beginningStageState;
+    }
+
+    public void SetProps(GameObject prop, bool state)
+    {
+        if (state)
+            prop.SetActive(true);
+        else
+            prop.SetActive(false);
+    }
+    public void SetLights(Light light, LightIntensity intensity, LightColor color)
+    {
+        switch (color)
+        {
+            case LightColor.white:
+                light.color = Color.white;
+                break;
+            case LightColor.blue:
+                light.color = Color.blue;
+                break;
+            case LightColor.purple:
+                light.color = Color.magenta;
+                break;
+            case LightColor.red:
+                light.color = Color.red;
+                break;
+            default:
+                break;
+        }
+
+        switch (intensity)
+        {
+            case LightIntensity.off:
+                light.intensity = 0;
+                break;
+            case LightIntensity.medium:
+                light.intensity = 10;
+                break;
+            case LightIntensity.high:
+                light.intensity = 30;
+                break;
+            default:
+                break;
+        }
+    }
     public void Update()
     {
-        if (!failed && !completed)
+        if (active)
         {
-            timer -= Time.deltaTime;
-            timerImage.fillAmount -= 1f / maxTimer * Time.deltaTime;
-
-            if (timer <= 0)
+            if (!failed && !completed)
             {
+                timer -= Time.deltaTime;
+                timerImage.fillAmount -= 1f / maxTimer * Time.deltaTime;
 
-                if (CheckDesiredState())
+                if (timer <= 0)
                 {
-                    Debug.Log("Success");
-                }
-                else
-                {
-                    AddFailure();
+                    if (CheckDesiredState())
+                    {
+                        Debug.Log("Success");
+                    }
+                    else
+                    {
+                        AddFailure();
+                    }
+
+                    actionIndex++;
+
+                    if (actionIndex >= desiredStageStates.Count)
+                    {
+                        completed = true;
+                    }
+
+                    ResetTimer();
+                    active = false;
                 }
 
-                if (actionIndex >= desiredStageStates.Count)
-                {
-                    completed = true;
-                }
+            }
+        }
 
-                ResetTimer();
+
+        if (Input.GetKeyDown(KeyCode.Space) && !active && !completed && !failed)
+        {
+            BeginScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (bookObject.activeSelf)
+            {
+                bookObject.SetActive(false);
             }
 
+            else
+            {
+                bookObject.SetActive(true);
+            }
         }
 
     }
 
+    public void BeginScene()
+    {
+        active = true;
+    }
     public void ChangeBackground(int index)
     {
         currentStageStates.background = index;
@@ -75,6 +194,8 @@ public class PlayManager : MonoBehaviour
         if (current.bar2Active != desired.bar2Active)
             return false;
         if (current.bar3Active != desired.bar3Active)
+            return false;
+        if (current.smokeActive != desired.smokeActive)
             return false;
         if (current.music != desired.music)
             return false;
@@ -94,6 +215,7 @@ public class PlayManager : MonoBehaviour
             return false;
         if (current.background != desired.background)
             return false;
+
 
         return true;
 
@@ -120,6 +242,9 @@ public class PlayManager : MonoBehaviour
                 break;
             case 3:
                 currentStageStates.bar3Active = toggle;
+                break;
+            case 4:
+                currentStageStates.smokeActive = toggle;
                 break;
             default:
                 break;
@@ -162,8 +287,13 @@ public class PlayManager : MonoBehaviour
     }
     public void ResetTimer()
     {
-        timer = maxTimer;
-        timerImage.fillAmount = 1;
+        if(actionIndex < desiredStageStates.Count)
+        {
+            maxTimer = desiredStageStates[actionIndex].timer;
+            timer = maxTimer;
+            timerImage.fillAmount = 1;
+        }
+        
     }
 
 }
