@@ -32,8 +32,12 @@ public class PlayManager : MonoBehaviour
 
     [Header("Stage References")]
     [SerializeField] Light leftLight;
+    [SerializeField] HandleLight leftLightHandle;
     [SerializeField] Light rightLight;
+    [SerializeField] HandleLight rightLightHandle;
     [SerializeField] Light centerLight;
+    [SerializeField] HandleLight centerLightHandle;
+
 
     [SerializeField] GameObject bar1;
     [SerializeField] GameObject bar2;
@@ -41,6 +45,7 @@ public class PlayManager : MonoBehaviour
     [SerializeField] GameObject smoke;
 
     [SerializeField] MeshRenderer background;
+    [SerializeField] Background backgroundHandle;
     [SerializeField] Material churchMaterial;
     [SerializeField] Material castleMaterial;
     [SerializeField] Material pantheonMaterial;
@@ -83,6 +88,8 @@ public class PlayManager : MonoBehaviour
             default:
                 break;
         }
+
+        backgroundHandle.InitialSlider(beginningStageState.background);
 
         currentStageStates = beginningStageState;
     }
@@ -128,6 +135,11 @@ public class PlayManager : MonoBehaviour
             default:
                 break;
         }
+
+        leftLightHandle.SetInitialLightSettings(color, intensity);
+        centerLightHandle.SetInitialLightSettings(color, intensity);
+        rightLightHandle.SetInitialLightSettings(color, intensity);
+
     }
     public void Update()
     {

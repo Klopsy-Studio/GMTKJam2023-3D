@@ -10,4 +10,5 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Act1");
     }
 
+    
 }

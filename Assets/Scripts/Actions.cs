@@ -7,6 +7,17 @@ public class Actions : MonoBehaviour
     [SerializeField] string action;
     [SerializeField] SoundTone tone;
     [SerializeField] SoundType type;
+
+    [SerializeField] GameObject buttonOn;
+    [SerializeField] GameObject buttonOff;
+
+    public void Start()
+    {
+        if(buttonOff != null)
+        {
+            buttonOff.gameObject.SetActive(false);
+        }
+    }
     public void RecordAction()
     {
         switch (type)

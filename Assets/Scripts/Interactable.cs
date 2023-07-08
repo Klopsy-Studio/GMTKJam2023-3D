@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public UnityEvent onHover;
     public UnityEvent onExit;
     public UnityEvent onClick;
+    public UnityEvent onUp;
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        onClick.Invoke();
-    }
+    public bool hovered;
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -25,4 +24,33 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         onExit.Invoke();
     }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (hovered)
+        {
+            onUp.Invoke();
+        }
+    }
+
+    public void EnableHover()
+    {
+        hovered = true;
+    }
+
+    public void DisableHover()
+    {
+        hovered = false;
+
+    }
+
+
+    public void Log(string message)
+    {
+        Debug.Log(message);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        onClick.Invoke();
+    }
 }
