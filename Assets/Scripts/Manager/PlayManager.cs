@@ -207,6 +207,7 @@ public class PlayManager : MonoBehaviour
     public void BeginScene()
     {
         active = true;
+        characterAnimations.gameObject.SetActive(true);
         characterAnimations.SetInteger("index", actionIndex);
         instructions.NextInstruction(actionIndex);
     }
