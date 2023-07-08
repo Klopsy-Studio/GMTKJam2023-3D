@@ -13,20 +13,6 @@ public class RomeoAnimations : MonoBehaviour
         romeoAnimations.SetTrigger(newPose);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ExitPose();
-            SetNewPoseRomeo("talk");
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ExitPose();
-            SetNewPoseRomeo("base");
-        }
-    }
     public void ExitPose()
     {
         romeoAnimations.SetTrigger("out");
