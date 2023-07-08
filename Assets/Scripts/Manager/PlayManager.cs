@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayManager : MonoBehaviour
     [SerializeField] Image timerImage;
     [SerializeField] GameObject bookObject;
     [SerializeField] float timer;
+    [SerializeField] BookManager instructions;
     float maxTimer;
 
     public int failures;
@@ -24,6 +26,9 @@ public class PlayManager : MonoBehaviour
     bool active;
     bool failed;
     bool completed;
+
+    [SerializeField] string currentAct;
+    [SerializeField] string nextAct;
 
     [Header("Stage References")]
     [SerializeField] Light leftLight;
@@ -39,6 +44,9 @@ public class PlayManager : MonoBehaviour
     [SerializeField] Material churchMaterial;
     [SerializeField] Material castleMaterial;
     [SerializeField] Material pantheonMaterial;
+
+    [SerializeField] Animator characterAnimations;
+    [SerializeField] Animator curtainAnimations;
     private void Awake()
     {
         instance = this;
@@ -145,7 +153,7 @@ public class PlayManager : MonoBehaviour
 
                     if (actionIndex >= desiredStageStates.Count)
                     {
-                        completed = true;
+                        CompleteAct();
                     }
 
                     ResetTimer();
@@ -176,9 +184,17 @@ public class PlayManager : MonoBehaviour
 
     }
 
+    public void CompleteAct()
+    {
+        completed = true;
+        curtainAnimations.SetTrigger("in");
+        Invoke("LoadNextScene", 1f);
+    }
     public void BeginScene()
     {
         active = true;
+        characterAnimations.SetInteger("index", actionIndex);
+        instructions.NextInstruction(actionIndex);
     }
     public void ChangeBackground(int index)
     {
@@ -201,18 +217,38 @@ public class PlayManager : MonoBehaviour
             return false;
         if (current.soundEffect != desired.soundEffect)
             return false;
-        if (current.leftLightColor != desired.leftLightColor)
-            return false;
+
         if (current.leftLightIntensity != desired.leftLightIntensity)
+        {
             return false;
-        if (current.rightLightColor != desired.rightLightColor)
-            return false;
+        }
+        else
+        {
+            if (current.leftLightColor != desired.leftLightColor)
+                return false;
+        }
+
         if (current.rightLightIntensity != desired.rightLightIntensity)
+        {
             return false;
-        if (current.centerLightColor != desired.centerLightColor)
-            return false;
+        }
+        else
+        {
+            if (current.rightLightColor != desired.rightLightColor)
+                return false;
+        }
+
         if (current.centerLightIntensity != desired.centerLightIntensity)
+        {
             return false;
+        }
+        else
+        {
+            if (current.centerLightColor != desired.centerLightColor)
+                return false;
+        }
+        
+        
         if (current.background != desired.background)
             return false;
 
@@ -281,9 +317,22 @@ public class PlayManager : MonoBehaviour
         if (failures >= 3)
         {
             failed = true;
+            curtainAnimations.SetTrigger("in");
             Debug.Log("Game Over");
 
+            Invoke("ReloadCurrentScene", 1f);
+
         }
+    }
+
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(currentAct);
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(nextAct);
     }
     public void ResetTimer()
     {
