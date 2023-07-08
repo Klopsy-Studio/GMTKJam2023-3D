@@ -11,6 +11,18 @@ public class HandleLight : MonoBehaviour
     public int colorLimit = 3;
 
     [SerializeField] Light currentLight;
+
+
+    [Header("Objects")]
+    [SerializeField] GameObject intensityOff;
+    [SerializeField] GameObject intensityMedium;
+    [SerializeField] GameObject intensityHigh;
+    [Space]
+    [SerializeField] GameObject whiteMode;
+    [SerializeField] GameObject blueMode;
+    [SerializeField] GameObject purpleMode;
+    [SerializeField] GameObject redMode;
+
     public void ChangeLightIntensity()
     {
         currentIntensity++;
@@ -24,11 +36,14 @@ public class HandleLight : MonoBehaviour
         {
             case LightIntensity.off:
                 currentLight.intensity = 0;
+                ShowCorrectIntensity(intensityOff);
                 break;
             case LightIntensity.medium:
+                ShowCorrectIntensity(intensityMedium);
                 currentLight.intensity = 10;
                 break;
             case LightIntensity.high:
+                ShowCorrectIntensity(intensityHigh);
                 currentLight.intensity = 30;
                 break;
             default:
@@ -38,6 +53,25 @@ public class HandleLight : MonoBehaviour
         RecordActionLight();
     }
 
+    public void ShowCorrectIntensity(GameObject obj)
+    {
+        intensityOff.SetActive(false);
+        intensityMedium.SetActive(false);
+        intensityHigh.SetActive(false);
+
+        obj.SetActive(true);
+        obj.transform.SetAsFirstSibling();
+    }
+
+    public void ShowCorrectColor(GameObject obj)
+    {
+        whiteMode.SetActive(false);
+        redMode.SetActive(false);
+        blueMode.SetActive(false);
+        purpleMode.SetActive(false);
+
+        obj.SetActive(true);
+    }
     public void ChangeLightColor()
     {
         currentColor++;
@@ -51,15 +85,19 @@ public class HandleLight : MonoBehaviour
         {
             case LightColor.white:
                 currentLight.color = Color.white;
+                ShowCorrectColor(whiteMode);
                 break;
             case LightColor.blue:
                 currentLight.color = Color.blue;
+                ShowCorrectColor(blueMode);
                 break;
             case LightColor.purple:
                 currentLight.color = Color.magenta;
+                ShowCorrectColor(purpleMode);
                 break;
             case LightColor.red:
                 currentLight.color = Color.red;
+                ShowCorrectColor(redMode);
                 break;
             default:
                 break;
@@ -68,6 +106,52 @@ public class HandleLight : MonoBehaviour
         RecordActionLight();
     }
 
+    public void SetInitialLightSettings(LightColor color, LightIntensity intensity)
+    {
+        switch (color)
+        {
+            case LightColor.white:
+                currentLight.color = Color.white;
+                ShowCorrectColor(whiteMode);
+                break;
+            case LightColor.blue:
+                currentLight.color = Color.blue;
+                ShowCorrectColor(blueMode);
+                break;
+            case LightColor.purple:
+                currentLight.color = Color.magenta;
+                ShowCorrectColor(purpleMode);
+                break;
+            case LightColor.red:
+                currentLight.color = Color.red;
+                ShowCorrectColor(redMode);
+                break;
+            default:
+                break;
+        }
+
+        currentColor = color;
+
+        switch (intensity)
+        {
+            case LightIntensity.off:
+                currentLight.intensity = 0;
+                ShowCorrectIntensity(intensityOff);
+                break;
+            case LightIntensity.medium:
+                ShowCorrectIntensity(intensityMedium);
+                currentLight.intensity = 10;
+                break;
+            case LightIntensity.high:
+                ShowCorrectIntensity(intensityHigh);
+                currentLight.intensity = 30;
+                break;
+            default:
+                break;
+        }
+
+        currentIntensity = intensity;
+    }
     public void RecordActionLight()
     {
         PlayManager.instance.ChangeLight(lightIndex, currentIntensity, currentColor);
