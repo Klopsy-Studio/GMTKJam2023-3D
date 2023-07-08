@@ -6271,7 +6271,10 @@ MonoBehaviour:
   timerImage: {fileID: 1994135452}
   bookObject: {fileID: 311981886}
   timer: 15
+  instructions: {fileID: 0}
   failures: 0
+  currentAct: 
+  nextAct: 
   leftLight: {fileID: 2070952717}
   rightLight: {fileID: 412236561}
   centerLight: {fileID: 1882167177}
@@ -6283,6 +6286,8 @@ MonoBehaviour:
   churchMaterial: {fileID: 2100000, guid: 66ba055d7c84024409f692dcabbe622b, type: 2}
   castleMaterial: {fileID: 2100000, guid: f2e13287e82d9d044a7f7cb4c67757b9, type: 2}
   pantheonMaterial: {fileID: 2100000, guid: a96db3fc000a9e348bd6d76a57b6af1a, type: 2}
+  characterAnimations: {fileID: 0}
+  curtainAnimations: {fileID: 0}
 --- !u!4 &730613305
 Transform:
   m_ObjectHideFlags: 0
