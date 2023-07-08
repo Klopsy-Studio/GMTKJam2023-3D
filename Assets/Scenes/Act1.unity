@@ -3302,6 +3302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: romeo_mask_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5382112308a399045b7fdc7fb07138a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5382112308a399045b7fdc7fb07138a6, type: 3}
 --- !u!4 &411323596 stripped
@@ -4026,6 +4031,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: romeo-look
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e1e852aed81cb24480545c05745db6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e1e852aed81cb24480545c05745db6d, type: 3}
 --- !u!4 &481827831 stripped
@@ -4658,6 +4668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: romeo-surprise
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eccd862dab9f0e4184b3e5a8dc2ef59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eccd862dab9f0e4184b3e5a8dc2ef59, type: 3}
@@ -5403,6 +5418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: romeo-guard
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 21397739da5fc75488a1247913ae778b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21397739da5fc75488a1247913ae778b, type: 3}
@@ -9139,6 +9159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: romeo-talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82765b405b333e844957241ac0eb46cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82765b405b333e844957241ac0eb46cc, type: 3}
@@ -14423,6 +14448,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: romeo-base
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb08b8507bd386c4eb119e5295cd2c24,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb08b8507bd386c4eb119e5295cd2c24, type: 3}
 --- !u!4 &1024737322 stripped
@@ -14578,6 +14608,7 @@ GameObject:
   - component: {fileID: 1057755721}
   - component: {fileID: 1057755720}
   - component: {fileID: 1057755719}
+  - component: {fileID: 1057755722}
   m_Layer: 0
   m_Name: Characters
   m_TagString: Untagged
@@ -14635,6 +14666,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057755722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057755718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52d90717371de8428ca5e059c8e7bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  romeoAnimations: {fileID: 1391986362}
 --- !u!1 &1060768911
 GameObject:
   m_ObjectHideFlags: 0
@@ -17197,7 +17241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1391986361}
-  - component: {fileID: 1391986363}
   - component: {fileID: 1391986362}
   m_Layer: 0
   m_Name: RomeoCharacter
@@ -17248,19 +17291,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1391986363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391986360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52d90717371de8428ca5e059c8e7bba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  romeoAnimations: {fileID: 1391986362}
 --- !u!1 &1393420029
 GameObject:
   m_ObjectHideFlags: 0
@@ -19619,6 +19649,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: romeo-drinking
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00809fdc5585d99408b4dd123ae1ee5f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00809fdc5585d99408b4dd123ae1ee5f, type: 3}
