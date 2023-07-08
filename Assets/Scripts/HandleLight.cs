@@ -40,11 +40,11 @@ public class HandleLight : MonoBehaviour
                 break;
             case LightIntensity.medium:
                 ShowCorrectIntensity(intensityMedium);
-                currentLight.intensity = 10;
+                currentLight.intensity = 2000;
                 break;
             case LightIntensity.high:
                 ShowCorrectIntensity(intensityHigh);
-                currentLight.intensity = 30;
+                currentLight.intensity = 7000;
                 break;
             default:
                 break;

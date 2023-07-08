@@ -35,15 +35,18 @@ public class Props : MonoBehaviour
     }
     public void CheckProp()
     {
-        if (!currentProp.activeSelf)
+        if(currentProp != null)
         {
-            switchOn.gameObject.SetActive(false);
-            switchOff.gameObject.SetActive(true);
-        }
-        else
-        {
-            switchOff.gameObject.SetActive(false);
-            switchOn.SetActive(true);
+            if (!currentProp.activeSelf)
+            {
+                switchOn.gameObject.SetActive(false);
+                switchOff.gameObject.SetActive(true);
+            }
+            else
+            {
+                switchOff.gameObject.SetActive(false);
+                switchOn.SetActive(true);
+            }
         }
     }
 }

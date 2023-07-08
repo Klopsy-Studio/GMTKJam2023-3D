@@ -5203,9 +5203,9 @@ MonoBehaviour:
   failures: 0
   currentAct: Act1
   nextAct: Act2
-  leftLight: {fileID: 0}
+  leftLight: {fileID: 784950643}
   leftLightHandle: {fileID: 896759333}
-  rightLight: {fileID: 0}
+  rightLight: {fileID: 2131271448}
   rightLightHandle: {fileID: 1113902098}
   centerLight: {fileID: 1882167177}
   centerLightHandle: {fileID: 2142408792}
@@ -5213,13 +5213,13 @@ MonoBehaviour:
   bar2: {fileID: 0}
   bar3: {fileID: 0}
   smoke: {fileID: 1006008343}
-  background: {fileID: 0}
+  background: {fileID: 1069195853}
   backgroundHandle: {fileID: 7656217540269601649}
   churchMaterial: {fileID: 2100000, guid: 66ba055d7c84024409f692dcabbe622b, type: 2}
   castleMaterial: {fileID: 2100000, guid: f2e13287e82d9d044a7f7cb4c67757b9, type: 2}
   pantheonMaterial: {fileID: 2100000, guid: a96db3fc000a9e348bd6d76a57b6af1a, type: 2}
   characterAnimations: {fileID: 0}
-  curtainAnimations: {fileID: 0}
+  curtainAnimations: {fileID: 1575834730}
 --- !u!4 &730613305
 Transform:
   m_ObjectHideFlags: 0
@@ -17170,7 +17170,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10000
+  m_Intensity: 2000
   m_Range: 42.88
   m_SpotAngle: 38.737595
   m_InnerSpotAngle: 20.444841
@@ -19204,7 +19204,7 @@ PrefabInstance:
         type: 3}
       propertyPath: backgroundRenderer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1069195853}
     - target: {fileID: 4980021767349789321, guid: 7d8ec30816663724abb3a27a5633dcd8,
         type: 3}
       propertyPath: m_Camera
@@ -19254,7 +19254,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentLight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2131271448}
     - target: {fileID: 4980021768468193168, guid: 7d8ec30816663724abb3a27a5633dcd8,
         type: 3}
       propertyPath: m_Camera
@@ -19264,7 +19264,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentLight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 784950643}
     - target: {fileID: 4980021768709267723, guid: 7d8ec30816663724abb3a27a5633dcd8,
         type: 3}
       propertyPath: m_Camera
@@ -19275,6 +19275,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 4980021769067398970, guid: 7d8ec30816663724abb3a27a5633dcd8,
+        type: 3}
+      propertyPath: m_Name
+      value: PropsButtons
+      objectReference: {fileID: 0}
     - target: {fileID: 4980021769087674792, guid: 7d8ec30816663724abb3a27a5633dcd8,
         type: 3}
       propertyPath: m_Camera

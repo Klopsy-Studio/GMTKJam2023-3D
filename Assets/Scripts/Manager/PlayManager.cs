@@ -96,6 +96,8 @@ public class PlayManager : MonoBehaviour
 
     public void SetProps(GameObject prop, bool state)
     {
+        if (prop == null)
+            return;
         if (state)
             prop.SetActive(true);
         else
