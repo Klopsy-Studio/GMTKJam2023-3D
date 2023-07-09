@@ -61,16 +61,28 @@ public class PlayManager : MonoBehaviour
 
     [SerializeField] Animator fade;
 
+    [Header("HUD Animations")]
+    [SerializeField] StopwatchAnim stopWatch;
+    [SerializeField] GameObject fail;
+    [SerializeField] GameObject correct;
+    [SerializeField] GameObject actStart;
+
     private void Awake()
     {
         instance = this;
         currentStageStates = new StageState();
 
         InitialSettings();
-        ResetTimer();
         active = false;
+
+        actStart.gameObject.SetActive(true);
+        maxTimer = desiredStageStates[actionIndex].timer;
+        timer = maxTimer;
+        timerImage.fillAmount = 1;
+        Invoke("BeginScene", 7f);
     }
 
+    
     public void InitialSettings()
     {
         SetProps(bar1, beginningStageState.bar1Active);
@@ -165,51 +177,36 @@ public class PlayManager : MonoBehaviour
 
                 if (timer <= 0)
                 {
+                    stopWatch.Disappear();
+
                     if (!CheckDesiredState())
                     {
                         failureJingle.Play();
+                        fail.gameObject.SetActive(true);
                         AddFailure();
                     }
                     else
                     {
                         victoryJingle.Play();
-
-                        
+                        correct.gameObject.SetActive(true);                        
                     }
 
                     actionIndex++;
+                    active = false;
 
                     if (actionIndex >= desiredStageStates.Count)
                     {
                         CompleteAct();
                     }
-
-                    ResetTimer();
-                    active = false;
+                    else
+                    {
+                        Invoke("ResetTimer", 2f);
+                    }
+                    
                 }
 
             }
         }
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && !active && !completed && !failed)
-        {
-            BeginScene();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (bookObject.activeSelf)
-            {
-                bookObject.SetActive(false);
-            }
-
-            else
-            {
-                bookObject.SetActive(true);
-            }
-        }
-
     }
 
     public void CompleteAct()
@@ -233,12 +230,17 @@ public class PlayManager : MonoBehaviour
     }
     public void BeginScene()
     {
-        active = true;
+        stopWatch.gameObject.SetActive(true);
         characterAnimations.gameObject.SetActive(true);
         characterAnimations.SetInteger("index", actionIndex);
         description.SetText(desiredStageStates[actionIndex].currentStageDescription);
-
         instructions.NextInstruction(actionIndex);
+        Invoke("ActivateTimer", 1.5f);
+    }
+
+    public void ActivateTimer()
+    {
+        active = true;
     }
     public void ChangeBackground(int index)
     {
@@ -383,8 +385,10 @@ public class PlayManager : MonoBehaviour
             maxTimer = desiredStageStates[actionIndex].timer;
             timer = maxTimer;
             timerImage.fillAmount = 1;
+            Debug.Log("Reseting timer");
+            BeginScene();
         }
-        
+
     }
 
 }
