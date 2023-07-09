@@ -10,5 +10,15 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Act1");
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
+    public void LoadMenuSequence()
+    {
+        Invoke("LoadGame", 2.3f);
+    }
     
 }

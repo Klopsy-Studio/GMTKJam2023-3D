@@ -7333,7 +7333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addbbbc47a4d4064596becbeef9002c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightIndex: 1
+  lightIndex: 2
   currentIntensity: 0
   intensityLimit: 2
   currentColor: 0
@@ -10118,7 +10118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addbbbc47a4d4064596becbeef9002c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightIndex: 1
+  lightIndex: 3
   currentIntensity: 0
   intensityLimit: 2
   currentColor: 0

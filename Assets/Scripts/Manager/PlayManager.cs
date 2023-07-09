@@ -207,7 +207,8 @@ public class PlayManager : MonoBehaviour
     {
         completed = true;
         curtainAnimations.SetTrigger("in");
-        Invoke("LoadNextScene", 1f);
+        characterAnimations.SetTrigger("end");
+        Invoke("LoadNextScene", 3f);
     }
     public void BeginScene()
     {
@@ -341,7 +342,7 @@ public class PlayManager : MonoBehaviour
             curtainAnimations.SetTrigger("in");
             Debug.Log("Game Over");
 
-            Invoke("ReloadCurrentScene", 1f);
+            Invoke("ReloadCurrentScene", 3f);
 
         }
     }
