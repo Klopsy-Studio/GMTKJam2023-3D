@@ -2162,9 +2162,9 @@ MonoBehaviour:
   backgroundRenderer: {fileID: 0}
   index: 0
   backgroundToChange:
-  - {fileID: 2100000, guid: 66ba055d7c84024409f692dcabbe622b, type: 2}
-  - {fileID: 2100000, guid: f2e13287e82d9d044a7f7cb4c67757b9, type: 2}
-  - {fileID: 2100000, guid: a96db3fc000a9e348bd6d76a57b6af1a, type: 2}
+  - {fileID: 2100000, guid: c524ed060f5ee094dbe43e4355212b13, type: 2}
+  - {fileID: 2100000, guid: c5da7f43e6c8dd94ea2a1e1bf458de41, type: 2}
+  - {fileID: 2100000, guid: c23b9d82366bd8d4791686e3334e00ca, type: 2}
   sliders:
   - {fileID: 7112104660977752270}
   - {fileID: 4980021768506334157}
@@ -18398,7 +18398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364.78, y: -10}
+  m_AnchoredPosition: {x: -369, y: -5.5}
   m_SizeDelta: {x: 93.14, y: 322.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8191374249614401918
@@ -18429,8 +18429,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2014 Sky\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n\u2014 Castle\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n\u2014
-    Forest\n"
+  m_text: "\u2014 Church\n-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n\u2014
+    Castle\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n\u2014Pantheon\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82efc11ed741b3747971be948085f7ef, type: 2}
   m_sharedMaterial: {fileID: 7998179279370272993, guid: 82efc11ed741b3747971be948085f7ef,
@@ -18458,8 +18458,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18494,7 +18494,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -10.130402, z: -10.659576, w: -27.354141}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

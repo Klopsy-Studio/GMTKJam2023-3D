@@ -55,6 +55,12 @@ public class PlayManager : MonoBehaviour
     [SerializeField] Animator characterAnimations;
     [SerializeField] Animator curtainAnimations;
 
+
+    [SerializeField] AudioSource victoryJingle;
+    [SerializeField] AudioSource failureJingle;
+
+    [SerializeField] Animator fade;
+
     private void Awake()
     {
         instance = this;
@@ -159,13 +165,16 @@ public class PlayManager : MonoBehaviour
 
                 if (timer <= 0)
                 {
-                    if (CheckDesiredState())
+                    if (!CheckDesiredState())
                     {
-                        Debug.Log("Success");
+                        failureJingle.Play();
+                        AddFailure();
                     }
                     else
                     {
-                        AddFailure();
+                        victoryJingle.Play();
+
+                        
                     }
 
                     actionIndex++;
@@ -207,8 +216,14 @@ public class PlayManager : MonoBehaviour
     {
         completed = true;
         curtainAnimations.SetTrigger("in");
-        characterAnimations.SetTrigger("end");
+        Invoke("Fade", 1f);
         Invoke("LoadNextScene", 3f);
+    }
+
+    public void Fade()
+    {
+        fade.SetTrigger("fadeIn");
+
     }
     public void BeginScene()
     {
@@ -334,14 +349,13 @@ public class PlayManager : MonoBehaviour
     public void AddFailure()
     {
         failures++;
-        Debug.Log("Failure");
 
-        if (failures >= 3)
+        if (failures >= 2)
         {
             failed = true;
             curtainAnimations.SetTrigger("in");
             Debug.Log("Game Over");
-
+            Invoke("Fade", 1f);
             Invoke("ReloadCurrentScene", 3f);
 
         }
