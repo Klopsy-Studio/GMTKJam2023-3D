@@ -152,6 +152,8 @@ public class HandleLight : MonoBehaviour
 
         currentIntensity = intensity;
     }
+
+
     public void RecordActionLight()
     {
         PlayManager.instance.ChangeLight(lightIndex, currentIntensity, currentColor);
@@ -166,6 +168,11 @@ public enum LightIntensity
 public enum LightColor
 {
     white, blue, purple, red
+};
+
+public enum LightPosition
+{
+    center, left, right
 };
 
 

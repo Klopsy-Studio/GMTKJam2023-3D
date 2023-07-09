@@ -54,6 +54,7 @@ public class PlayManager : MonoBehaviour
 
     [SerializeField] Animator characterAnimations;
     [SerializeField] Animator curtainAnimations;
+
     private void Awake()
     {
         instance = this;
@@ -315,7 +316,6 @@ public class PlayManager : MonoBehaviour
             case 1:
                 currentStageStates.leftLightColor = color;
                 currentStageStates.leftLightIntensity = intensity;
-
                 break;
             case 2:
                 currentStageStates.centerLightColor = color;
