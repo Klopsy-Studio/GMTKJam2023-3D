@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayManager : MonoBehaviour
     [SerializeField] GameObject bookObject;
     [SerializeField] float timer;
     [SerializeField] BookManager instructions;
+    [SerializeField] TextMeshProUGUI description;
     float maxTimer;
 
     public int failures;
@@ -92,6 +94,8 @@ public class PlayManager : MonoBehaviour
         backgroundHandle.InitialSlider(beginningStageState.background);
 
         currentStageStates = beginningStageState;
+
+        description.SetText(beginningStageState.currentStageDescription);
     }
 
     public void SetProps(GameObject prop, bool state)
@@ -209,6 +213,8 @@ public class PlayManager : MonoBehaviour
         active = true;
         characterAnimations.gameObject.SetActive(true);
         characterAnimations.SetInteger("index", actionIndex);
+        description.SetText(desiredStageStates[actionIndex].currentStageDescription);
+
         instructions.NextInstruction(actionIndex);
     }
     public void ChangeBackground(int index)

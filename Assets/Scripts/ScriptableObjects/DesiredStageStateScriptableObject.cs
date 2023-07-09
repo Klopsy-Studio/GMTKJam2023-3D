@@ -49,6 +49,9 @@ public class StageState
 
     [Header("Time needed")]
     public int timer;
+
+    [Header("Description")]
+    [TextArea] public string currentStageDescription;
 }
 
 public enum SoundTone
