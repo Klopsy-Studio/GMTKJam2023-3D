@@ -15673,7 +15673,7 @@ MonoBehaviour:
     bar3Active: 0
     smokeActive: 0
     background: 1
-    timer: 15
+    timer: 20
     currentStageDescription: Focus on the left side with medium natural light, these
       people are Romeo and his butlers.
   - soundEffect: 0
@@ -15689,7 +15689,7 @@ MonoBehaviour:
     bar3Active: 0
     smokeActive: 0
     background: 1
-    timer: 15
+    timer: 20
     currentStageDescription: Now stop lighting the left and do the same on the right,
       these are Juliet and her mother.
   - soundEffect: 0
@@ -15705,7 +15705,7 @@ MonoBehaviour:
     bar3Active: 0
     smokeActive: 0
     background: 1
-    timer: 15
+    timer: 20
     currentStageDescription: They are in the <b>castle</b> doing a mask party, so
       light everything to make it look festive and romantic.
   currentStageStates:
