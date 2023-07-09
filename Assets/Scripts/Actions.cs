@@ -11,6 +11,8 @@ public class Actions : MonoBehaviour
     [SerializeField] GameObject buttonOn;
     [SerializeField] GameObject buttonOff;
 
+    bool playing;
+    [SerializeField] AudioSource source;
     public void Start()
     {
         if(buttonOff != null)
@@ -23,7 +25,17 @@ public class Actions : MonoBehaviour
         switch (type)
         {
             case SoundType.music:
-                PlayManager.instance.ChangeMusicTone(tone);
+
+                if (source.isPlaying)
+                {
+                    PlayManager.instance.ChangeMusicTone(SoundTone.none);
+                    source.Stop();
+                }
+                else
+                {
+                    PlayManager.instance.ChangeMusicTone(tone);
+                    source.Play();
+                }
                 break;
             case SoundType.sound:
                 PlayManager.instance.ChangeSoundEffectTone(tone);

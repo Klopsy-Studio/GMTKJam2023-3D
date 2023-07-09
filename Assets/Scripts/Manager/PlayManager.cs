@@ -85,13 +85,13 @@ public class PlayManager : MonoBehaviour
 
         switch (beginningStageState.background)
         {
-            case 1:
+            case 0:
                 background.material = churchMaterial;
                 break;
-            case 2:
+            case 1:
                 background.material = castleMaterial;
                 break;
-            case 3:
+            case 2:
                 background.material = pantheonMaterial;
                 break;
             default:
@@ -215,11 +215,17 @@ public class PlayManager : MonoBehaviour
     public void CompleteAct()
     {
         completed = true;
-        curtainAnimations.SetTrigger("in");
-        Invoke("Fade", 1f);
+        characterAnimations.SetTrigger("end");
+        Invoke("CloseCurtain", 1f);
+        Invoke("Fade", 2f);
         Invoke("LoadNextScene", 3f);
     }
 
+    public void CloseCurtain()
+    {
+        curtainAnimations.SetTrigger("in");
+
+    }
     public void Fade()
     {
         fade.SetTrigger("fadeIn");
@@ -262,7 +268,7 @@ public class PlayManager : MonoBehaviour
         }
         else
         {
-            if (current.leftLightColor != desired.leftLightColor)
+            if (current.leftLightColor != desired.leftLightColor && current.leftLightIntensity != LightIntensity.off)
                 return false;
         }
 
@@ -272,17 +278,17 @@ public class PlayManager : MonoBehaviour
         }
         else
         {
-            if (current.rightLightColor != desired.rightLightColor)
+            if (current.rightLightColor != desired.rightLightColor && current.rightLightIntensity != LightIntensity.off)
                 return false;
         }
 
-        if (current.centerLightIntensity != desired.centerLightIntensity)
+        if (current.centerLightIntensity != desired.centerLightIntensity )
         {
             return false;
         }
         else
         {
-            if (current.centerLightColor != desired.centerLightColor)
+            if (current.centerLightColor != desired.centerLightColor && current.centerLightIntensity != LightIntensity.off)
                 return false;
         }
         

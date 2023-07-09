@@ -43,9 +43,9 @@ public class Background : MonoBehaviour
             sliders[i].gameObject.SetActive(false);
         }
 
-        sliders[chosenIndex-1].gameObject.SetActive(true);
+        sliders[chosenIndex].gameObject.SetActive(true);
 
-        index = chosenIndex - 1;
+        index = chosenIndex;
     }
 
 }
